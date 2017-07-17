@@ -22,8 +22,8 @@ int main()
 	scanf("%d", &N);
 	data[N] = 0;
 	for (i = 1; i < N; i++)
-		data[i] = INT_MAX;	
-		
+		data[i] = INT_MAX;
+
 	for (int i = N; i >= 1; i--)
 	{
 		if (i % 3 == 0) data[i/3] = min(data[i/3], data[i] + 1);
