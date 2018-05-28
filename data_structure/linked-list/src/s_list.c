@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "linked_list.h"
+#include "s_list.h"
 
 static SList *_s_list_alloc(void)
 {
@@ -115,6 +115,25 @@ SList *s_list_delete_link(SList *list, SList *link)
 	return list;
 }
 
+void s_list_free_full(SList *list, s_del_func func)
+{
+	SList *del_list;
+
+	if (list == NULL || func == NULL)
+		return;
+
+	s_list_foreach(list, (s_func)func, NULL);
+
+	while (list)
+	{
+		del_list = list;
+		list = list->next;
+
+		s_list_free(del_list);
+	}
+
+}
+
 void s_list_foreach(SList *list, s_func func, void *user_data)
 {
 	while (list)
@@ -133,5 +152,18 @@ SList *s_list_last(SList *list)
 			list = list->next;
 		}
 	}
+	return list;
+}
+
+SList *s_list_first(SList *list)
+{
+	if (list)
+	{
+		while (list->pre)
+		{
+			list = list->pre;
+		}
+	}
+
 	return list;
 }
