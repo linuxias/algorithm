@@ -1,9 +1,15 @@
 #ifndef __S_LIST_H__
 #define __S_LIST_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define ERR(msg) do { \
 		printf("%s", msg); \
 } while (0);
+
+
 
 typedef void* spointer;
 typedef struct _SList SList;
@@ -35,5 +41,9 @@ SList *s_list_last(SList *list);
 
 SList *s_list_first(SList *list);
 
+
+#ifdef __cplusplus
+}
+#endif
 #endif /* __S_LIST_H__ */
 
