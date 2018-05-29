@@ -58,7 +58,6 @@ void s_list_free(SList *list)
 SList *s_list_remove(SList *list, spointer data)
 {
 	SList *tmp;
-
 	tmp = list;
 
 	while (tmp)
@@ -166,4 +165,9 @@ SList *s_list_first(SList *list)
 	}
 
 	return list;
+}
+
+spointer s_list_get_data(SList *list)
+{
+	return list ? list->data : NULL;
 }

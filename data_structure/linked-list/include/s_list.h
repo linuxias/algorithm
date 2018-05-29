@@ -1,15 +1,9 @@
 #ifndef __S_LIST_H__
 #define __S_LIST_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define ERR(msg) do { \
 		printf("%s", msg); \
 } while (0);
-
-
 
 typedef void* spointer;
 typedef struct _SList SList;
@@ -27,7 +21,7 @@ SList *s_list_append(SList *list, spointer data);
 
 void s_list_free(SList *list);
 
-	void s_list_free_full(SList *list, s_del_func func);
+void s_list_free_full(SList *list, s_del_func func);
 
 SList *s_list_remove(SList *list, spointer data);
 
@@ -41,9 +35,7 @@ SList *s_list_last(SList *list);
 
 SList *s_list_first(SList *list);
 
+spointer s_list_get_data(SList *list);
 
-#ifdef __cplusplus
-}
-#endif
 #endif /* __S_LIST_H__ */
 
