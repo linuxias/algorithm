@@ -171,3 +171,30 @@ spointer s_list_get_data(SList *list)
 {
 	return list ? list->data : NULL;
 }
+
+SList *s_list_find(SList *list, spointer data)
+{
+	while (list)
+	{
+		if (list->data == data)
+			break;
+		list = list->next;
+	}
+
+	return list;
+}
+
+SList *s_list_find_custom(SList *list, spointer data, s_comp_func func)
+{
+	if (func == NULL || data == NULL)
+		return NULL;
+
+	while (list)
+	{
+		if (!func(list->data, data))
+			return list;
+		list = list->next;
+	}
+
+	return NULL;
+}
