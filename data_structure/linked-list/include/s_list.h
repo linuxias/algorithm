@@ -10,7 +10,7 @@ typedef struct _SList SList;
 
 typedef void (*s_func) (spointer data, void *user_data);
 typedef void (*s_del_func) (spointer data);
-typedef void (s_comp_func) (spointer a, spointer b);
+typedef int (*s_comp_func) (spointer a, spointer b);
 
 struct _SList {
 	SList *pre;
